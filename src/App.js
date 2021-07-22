@@ -1,7 +1,7 @@
 import React from 'react';
 import {useReducer} from 'react';
 import reducer, { initialState } from './reducers';
-import { applyNumber } from './actions/index';
+import { applyNumber, changeOperation } from './actions/index';
 
 import './App.css';
 
@@ -13,6 +13,10 @@ function App() {
 
   const applyNumberHandler = (event) => {
     dispatch(applyNumber(event));
+  }
+
+  const changeOperationHandler = (event) => {
+    dispatch(changeOperation(event));
   }
 
   return (
@@ -56,9 +60,9 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"}/>
-              <CalcButton value={"*"}/>
-              <CalcButton value={"-"}/>
+              <CalcButton value={"+"} onClick={() => changeOperationHandler("+")}/>
+              <CalcButton value={"*"} onClick={() => changeOperationHandler("*")}/>
+              <CalcButton value={"-"} onClick={() => changeOperationHandler("-")}/>
             </div>
 
             <div className="row ce_button">
